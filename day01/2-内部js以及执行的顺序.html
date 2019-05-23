@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        alert("header....");
+    </script>
+</head>
+<body>
+    <h3>网页中的内容</h3>
+
+    <!-- 推荐写在body标签的底部 -->
+    <script>
+        // 因为页面加载的顺序是从上到下加载的.那么如果一段js比较复杂的话,那么执行js是需要时间的.
+        // 原则是:优先加载网页的内容,其次加载js
+        alert("body...")
+    </script>
+</body>
+</html>
