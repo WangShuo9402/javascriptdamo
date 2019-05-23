@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //判断是否包含某个字符串 - java中的contains方法
+        console.log("hello".includes("llo")); //true
+
+        //repeat - 重复
+        console.log("hello".repeat(3)); //hellohellohello
+
+        //padStart
+        var d = new Date();//获取当前系统时间
+        console.log(d.getSeconds().toString().padStart(2,"0"))//不足2位,在左边补充"0""
+    </script>
+</body>
+
+</html>

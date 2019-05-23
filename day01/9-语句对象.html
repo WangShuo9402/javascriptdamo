@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //和java中高度保持一致
+        // 条件语句 
+        var age = 60;
+        if(age>90){
+            console.log("优秀");
+        }else if(age>80){
+            console.log("良好");
+        }else{
+            console.log("加油!");
+        }
+
+        //三目运算符
+        console.log(3>2 ? "ok" : "false");//ok
+
+        //switch..case..default
+        
+
+        //循环语句 
+        //嵌套循环...
+        for(var i = 1;i<=3;i++){
+            console.log(i)
+        }
+
+        //增强for循环
+        var arr = [10,20,30];//定义数组
+        arr[3] = 50;//动态给数组中增加数据.
+
+        //console.log(arr[1000]);//undefined
+
+        for(var pos in arr){//pos代表的是下标...
+            console.log(arr[pos]);
+        }
+
+        //while循环
+        //break continue
+        var flag = true;
+        var count = 0;
+        while(flag){
+            console.log(count);
+            count++;
+            if(count==5){
+                //flag = false;
+                break;
+            }
+        }
+        
+        //do..while
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //向上舍入
+        console.log(Math.ceil(3.5));//4
+
+        //向下摄入
+        console.log(Math.floor(3.5));//3
+
+        //求随机数
+        console.log(Math.random());//[0,1)之间的随机数 - 包含小数的
+
+        //求出3-5之间的随机整数.
+        console.log(Math.floor(Math.random()*3+3));//[3,6)
+
+        //四舍五入
+        console.log(Math.round(3.5));//4
+
+        //直接截取 - es6新特性
+        console.log(Math.trunc(3.5));//3 保留整数位
+
+        //判断正数1,负数-1,0,-0,NaN
+        console.log(Math.sign("a"));//
+
+        //保留两位小数,并且四舍五入.
+        //数字属于number对象
+        console.log(123.456.toFixed(2));//123.46
+    </script>
+</body>
+</html>

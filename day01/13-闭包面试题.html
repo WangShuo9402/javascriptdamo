@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function 函数名(){函数体}
+
+        //var 变量名 = function(){};
+
+        //配合es6里面的箭头函数
+        function add(a,b){
+            return a+b;
+        }
+
+        var add = function(a,b){
+            return a+b;
+        }
+        console.log(add(10,20));
+
+        //var add2 = (a,b)=>a+b;
+        var add2 = (a,b) => {
+            return a + b;
+        }
+        console.log(add2(100,200));
+
+
+        //经典的面试题
+        //js中闭包的好处.
+        function say(){
+            //局部变量.
+            var i = 1;
+            var sayName = function(){//闭包函数sayName
+                i++;
+                alert(i);
+            }
+            return sayName;
+        }
+        var result1 = say();//result1 = sayName的引用
+        //思考问题 - 当say()函数调用完毕之后,本来函数中的局部变量都是应该消失的[内存中已经释放]
+        //由于闭包访问外部函数的i，外部函数返回引用闭包函数，
+        //所以内存不会被回收，i值也常驻内存，所以每次执行say函数时，i并不会重新复制
+
+        //让局部变量 - 永驻内存 - 让局部变量的生命脱离它所在的函数
+        //变向的提高的局部变量的生命周期.
+        result1(); //2
+        result1(); //3
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1. 在定义数组的同时,给定一个数组的长度
+        var arr1 = new Array(3);
+        //通过下标一一进行赋值 - for循环进行赋值
+        arr1[0] = 10;
+        arr1[1] = 20;
+        arr1[2] = 30;
+        arr1[3] = 40;//js中的数组是长度可变的数组
+
+        //遍历该数组
+        console.log(arr1);
+
+        //2. 在定义数组的同时进行数组赋值操作
+        //js中只要看到[]代表是一个数组对象
+        var arr = [10, 20, 30];
+        for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+        for (var e in arr) {//e仍然是代表的是下标
+            console.log(arr[e]);
+        }
+        console.log(typeof (arr));//object
+
+        //js中任何的类型都是属于对象类型,拥有属性和方法
+        //es6关于数组的新的特性[相当多]
+
+        //filter - 过滤器
+        var names = ["tom", "admin", "tom", "jack"];
+
+        //js特性 - 闭包 - 将一个函数作为另外一个函数的参数进行传递.
+        // var t = names.filter(function(item){//匿名的函数
+        //     //console.log(item);//此处的item就是代表数组中的具体的元素
+        //     if(item.includes("m"))
+        //         return true;//将满足条件的结果放入到新的数组t中.
+        // });
+
+        //此处的函数likeName就是前端js中的定义的回调函数 - 被作为参数传递的函数
+        function likeName(item) {
+            if (item.includes("m")) {
+                return true;
+            }
+        }
+        var t = names.filter(likeName);
+        // console.log(names);//调用filter方法的时候,并没有对原来的数组进行改变
+        console.log(t);
+
+
+        //find只会找出第一次出现的.后面的值不会再进行匹配
+        var tt = names.find(function (item) {//匿名的函数
+            //console.log(item);//此处的item就是代表数组中的具体的元素
+            if (item.includes("ms"))//如果没有匹配到undefined
+                return true;//将满足条件的结果放入到新的数组t中.
+        });
+        console.log(tt);
+
+        //foreach
+        var numbers = [10, 20, 30];
+        //将该数组中的每个元素都加10
+        numbers.forEach(function (item) {
+            item += 10;
+            console.log(item);
+        });
+
+        //es6新特性支持箭头表达式的
+        numbers.forEach(item => {
+            console.log(item)
+        })
+
+        // console.log(addn);
+
+        //java中的lambda表达式
+        //public void test(new IA(){
+        //         @Override
+        //         public void conn(Session ses){
+
+        //         }
+        //    });
+
+        // public void test(ses -> {
+
+        // })
+
+        //pop push unshift slice ...
+
+        var n = [10, 20, 10, 40, 50];
+
+        //只要找到一个,就返回true,并且终止迭代
+        var flag = n.some(item => {
+            if (item == 10) {
+                //alert("===")
+                return true;
+            } 
+        });
+        console.log(flag);
+
+        //https://www.runoob.com/w3cnote/es6-array.html
+
+
+    </script>
+</body>
+
+</html>

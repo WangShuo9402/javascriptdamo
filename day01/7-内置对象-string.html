@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1. 创建一个字符串
+        var str1 = new String("tom");
+        var str2 = new String("tom");
+
+        //在对象类型中 - 地址
+        console.log(str1 == str2); //flase
+
+        //直接创建字符串
+        var str3 = "hello";
+        var str4 = "hello";
+        console.log(str3==str4); //true
+
+        //字符串中常用的方法
+        console.log(str4.charAt(1)); //e
+
+        //字符串的正则匹配  match
+        var reg02 = /[a-z][0-9_]{5}/g;
+        console.log("s456782".match(reg02)); ////如果匹配不到,返回null
+
+        //替换
+        console.log("我是一个纯情的小鲜肉".replace("纯情","骚气"));
+
+        //replace也是可以和正则一起使用的
+        var reg01 = /[a-z]+/g;
+        console.log("hello567abc".replace(reg01,"xx"));//xx567xx
+
+        //search也是配合正则
+        console.log("hello567我们abc".search(reg01));//匹配到了,返回是0,没有匹配到,则返回-1
+
+        //截取字符串
+        console.log("hello world".slice(2)); ////llo world
+
+        console.log("192.168.2.49".split("."));
+
+        var reg = /[a-z]+/g;
+        console.log("123546kjgg5562uhg25".split(reg));//"123546""5562""25"     
+    </script>
+</body>
+
+</html>

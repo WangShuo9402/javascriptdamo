@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(1==1); //true
+
+        console.log(1=="1");//true  js中  ==只比较值，不比较类型 在底层字符串仍然转换数字进行比较
+        console.log(1==="1");//false  全等于1. 比较值  2.比较类型 值和类型一致的时候,才为true
+
+        //在进行计算的时候,true - > 数字1  false - > 数字 0 来进行计算的
+        var falg = true;
+        console.log(1+falg); //2
+
+        var n = 10/3;//js中就是进行除法
+        console.log(n);
+
+        console.log(10%3);//1 取摸
+
+        //和java的相同点,小数在计算的时候会有精度的丢失
+        console.log(0.1+0.2);//0.30000000000000004
+
+           //支持大整数.
+        console.log(66666666666666666666666666666666666);
+
+        var a = 1;
+        console.log(++a);//2 
+
+        
+        a+=2;
+        console.log(a);//ok
+
+        console.log(2>3)
+
+        console.log(10^8);//异或
+
+        console.log(~10);//-11          ~x = -(x+1);
+
+        console.log(-10>>2);//-3
+
+        console.log(-10>>>2);//1073741821
+
+
+        console.log(10 & 8);
+
+        console.log(10 | 8);
+    </script>
+</body>
+
+</html>

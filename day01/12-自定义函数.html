@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义一个无参函数
+        //function关键字+方法名称
+        function test01(){
+            var a = 10;
+            var b = 20;
+            console.log(a+b);//函数体中没有返回值
+        }
+
+        //函数的调用
+        test01();
+
+        //定义一个带参的有返回类型的
+        function test02(a,b){
+            return a + b;//函数体中利用return + 返回值
+        }
+        //需要一个变量去存储
+        var result = test02(10,30);
+        console.log(result);
+
+        //函数参数可以给定一个默认值
+        //不支持重载的
+        function test03(a=10){//此次没有进行传入参数,那么a会使用默认值10
+            console.log(a);
+        }
+        test03(100);
+
+        function add(a,b){
+            return a + b;
+        }
+
+        //定义一个函数
+        function methods(a,b,fun){
+            return a*b + fun;
+        }
+
+        var methods_result = methods(10,20,add(10,20));
+        console.log(methods_result);
+
+        //js中的函数也是可以看做是一个"变量的值"
+        //那么方法名相当于"变量名"
+        function test04(){
+            console.log("test04...");
+        }
+        //var t = test04;//此处的test04是指向方法的地址
+        //console.log(test04)
+        
+        // var t = test04;
+        // t();
+
+        test04();
+
+        //闭包函数 - 将函数[闭包函数]作为一个参数传入到另外一个函数的参数列表中
+
+        function test05(a,b,fun){//闭包的形式一:此处的fun就是一个闭包函数
+            return a*b + fun(10,20);
+        }
+
+        // var test05_result = test05(100,200,function(a,b){
+        //     return a+b;
+        // });
+
+        var test05_result = test05(100,200,(a,b)=>a+b);
+        console.log(test05_result);
+
+
+        //闭包的形式2 - js中函数体中是可以定义函数的
+        function f1(){
+            var a = 10;
+            function f2(){
+                var b = 20;
+                return b;
+            }
+            return f2;
+        }
+
+        var f1_result = f1();//f2函数的引用
+        console.log(f1_result());
+    </script>
+</body>
+</html>
