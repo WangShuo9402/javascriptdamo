@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- DOM - Document Object Model = 文档对象模型 -->
+    <form action="">
+        <!-- id的值是唯一的 -->
+        <input type="text" id="username" value="tom" name="uname">
+        <input type="text" id="password" value="admin">
+    </form>
+
+    <div class="c2">
+        div..c2
+    </div>
+    
+    <!-- class的值是允许重复的 -->
+    <div class="c1">
+        第一个div...c1...one
+    </div>
+
+    <div class="c1">
+        第一个div...c1
+    </div>
+
+    <!-- 标签不一定拥有name属性 -->
+    <p class="c1" name="pp">
+        第一个p
+    </p>
+
+    <p class="c1" name="pp">
+        two p
+    </p>
+
+    <div id="outer">
+        <p>
+            <span>span01</span>
+            <label>
+                <span>label_span</span>
+            </label>
+            <span>span02</span>
+        </p>
+        <p>
+            <span>span033</span>
+        </p>
+        <span>ss</span>
+        <span>sss</span>
+    </div>
+
+    <script>
+        //1.根据标签的名称来进行获取 - 肯定是一个数组.
+        //var ps = document.getElementsByTagName("body")[0];
+        //alert(ps.parentNode.parentNode.nodeName);//顶级的#document节点
+
+        var ps = document.getElementsByTagName("p");
+        //alert(ps.length)
+
+        //2. 根据id来获取 - 返回的肯定是一个单个对象
+        var unameInput = document.getElementById("username");
+        //alert(unameInput.value);
+
+        //3. 根据class属性的值来获取 - 返回的肯定是一个数组对象
+        var pc = document.getElementsByClassName("c1");
+        //alert(pc.length);
+        
+        //4. 根据标签的name属性值
+        var names = document.getElementsByName("pp");
+        //(names.length);
+
+        var divs = document.getElementById("outer");
+        var outer_ps = divs.getElementsByTagName("p");
+        //alert(outer_ps.length);
+
+        //获取的是某个元素下的第一个p
+        var first_p = divs.querySelector("p");
+        //alert(first_p.innerText);
+
+        //获取的是某个元素下的第一个p下面的第一个span
+        var first_p_spans = divs.querySelector("p span");
+        //alert(first_p_spans.innerText);
+
+        //获取文档中所有class="c1"的第一个出现的div
+        var div_class = document.querySelector("div.c1");
+        //alert(div_class.innerText);
+
+        //获取所有input标签,但是type属性为text的第一个input标签
+        var input_username = document.querySelector("input[type=text]");
+        //alert(input_username.value)
+
+        var all_ps = divs.querySelectorAll("p");//document.getElementsByTagName("p")
+        //alert(all_ps.length);
+
+        // var divs_all_spans = divs.querySelectorAll("p span");
+        var divs_all_spans = divs.querySelectorAll("p>span");
+        //alert(divs_all_spans.length)
+        
+        // var div_class_all = document.querySelectorAll(".c1");//document.getElementsByClassName("c1")
+        var div_class = document.querySelector("div.c1");
+
+        //(div_class_all.length)
+
+        var test_id = document.querySelector("#username");//document.getElementById("username")
+        alert(test_id.value)
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outer">
+        <h3>InnerText和InnerHTML</h3>
+    </div>
+
+    <script>
+        //1. 获取p对象
+        var p = document.getElementById("outer");
+        //var p = document.querySelector("p");
+        //var p = document.querySelectorAll("p")[0];
+    
+        //获取纯文本内容
+        //console.log(p.innerText);
+
+        document.write(p.innerText+"<br>")
+
+        //获取纯文本内容包括html标签 - 获取该标签中的所有的一切
+        //console.log(p.innerHTML);
+        document.write(p.innerHTML+"<br>");
+    </script>
+</body>
+</html>
