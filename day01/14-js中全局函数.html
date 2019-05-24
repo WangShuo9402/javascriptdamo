@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- Array String Math Date - 内置对象 -->
+<!-- 全局对象 window-->
+
+<body>
+    <script>
+        //调用全局对象中的函数,全局对象是可以省略不写的
+        // window.alert("弹出框");
+
+        //全局函数 - JS已经内置好了.
+        //全局属性 - NaN - 非数字Not a Number
+        //        - undefined - 变量未定义
+
+        //parseInt和parseFloat
+        //将字符串转换成整数
+        console.log(parseInt("100") + 100);
+
+        console.log(parseInt("a") + 100);//NaN
+
+        console.log(parseInt("100a200") + 300);//400
+
+        //判断是否为有限数
+        console.log(isFinite(10 / 3));//true - 无穷大返回true
+
+        //判断是否为一个数字
+        console.log(isNaN("a"));//true  is not a number
+
+        //eval - 强制计算字符串
+        console.log(eval("10+20*10+(3+2)"));//30
+        //eval - 将一个json形式的字符串转换成真正的json对象
+        //json格式 - map的形式 - key - value的形式
+        //json对象 - object - {}
+
+        //定义一个json字符串
+        // var jsons = '{"id":"1","name":"tom"}';
+        // jsons = eval("("+jsons+")");
+        // console.log(jsons.name);
+
+        var jsons = '[{"id":"1","name":"tom"},{"id":"2","name":"jack"}]';
+        jsons = eval(jsons);
+        console.log(jsons[1].name);
+
+        //对url进行编码的操作
+        console.log(encodeURI("http://aistar.success.com?name=管成功"));//http://aistar.success.com?name=%E7%AE%A1%E6%88%90%E5%8A%9F
+
+        //对url进行解码操作
+        console.log(decodeURI("http://aistar.success.com?name=%E7%AE%A1%E6%88%90%E5%8A%9F"));
+    </script>
+</body>
+
+</html>

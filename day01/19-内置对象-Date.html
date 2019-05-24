@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.获取当前系统时间
+        var d = new Date();
+        console.log(d);
+
+        //2.根据指定的年月日时分秒来构建指定的Date对象
+        var d2 = new Date("1995-05-23 13:23:01");
+        console.log(d2);
+
+        //2-1.月份是[1-11]
+        var d3 = new Date(2019,04,24,13,55,21);
+        console.log(d3);
+
+        //对日期进行格式化操作 - js中手动进行格式化
+        //获取年份
+        var year = d3.getFullYear();
+
+        //获取月份
+        var month = (d3.getMonth()+1).toString().padStart(2,"0");
+
+        //获取日    
+        var day = d3.getDate().toString().padStart(2,"0");
+
+        //获取时分秒
+        var hours = d3.getHours().toString().padStart(2,"0");
+
+        var minutes = d3.getMinutes().toString().padStart(2,"0");
+
+        var seconds = d3.getSeconds().toString().padStart(2,"0");
+        
+        //获取星期几
+        //week=0 星期日
+        var week = d3.getDay();
+        var weeks = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+
+        console.log(year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds+" "+weeks[week]);
+
+    </script>
+</body>
+
+</html>

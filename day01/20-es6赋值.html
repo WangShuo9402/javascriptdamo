@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //多个进行赋值
+        // var [a,b] = [10,20];
+        // console.log(a);
+        // console.log(b);
+
+        // var [a,b] = [10,20,30];//此处的30没有赋值给任何变量
+        // console.log(a);
+        // console.log(b);
+
+        //将10赋值给了a,其余的所有的值全部赋值给了b
+        var [a,...b] = [10,20,30];//此处的30没有赋值给任何变量
+        console.log(a);
+        console.log(b);
+        console.log(b[0])
+        console.log(b[1])
+        
+        function add(...n){//可变长列表,如果什么都不传,那么为[]
+            //判断数组是否为空 == "" 或者判断数组的长度是否>0
+            //console.log(n == "")
+            for(var i in n){
+                console.log(n[i]);
+            }
+        }
+        add(1,2,3);
+
+        var [a1,b1] = [100,[200,300,400]];
+    </script>
+</body>
+</html>

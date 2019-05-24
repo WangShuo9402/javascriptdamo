@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //学生函数
+        function Student(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+        //创建学生对象
+        var s1 = new Student(1, "tom");
+        var s2 = new Student(2, "jack");
+        var s3 = new Student(3, "mike");
+
+        //创建一个学生数组
+        var students = new Array();//此处的数组的长度在定义的时候可以省略不写.
+
+        //昨天使用下标一一进行赋值
+        //js中数组中提供了push
+        students.push(s1);
+        students.push(s2);
+        students.push(s3);
+
+        //根据学生的name进行降序排.
+        desc = (sm, sn) => sn.name.localeCompare(sm.name);
+        students.sort(desc);
+
+        // function desc(sm,sn){
+        //     return sn.name.localeCompare(sm.name);
+        // }
+
+        for (var s in students) {
+            console.log(students[s].id + ":" + syudents.name);
+        }
+
+
+    </script>
+</body>
+
+</html>

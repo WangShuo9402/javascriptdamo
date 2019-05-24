@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js不是面向对象的语言,而是属于基于对象的语言
+        // 判断这个语言中是否存在多态
+
+        //几乎用不到...
+        //Java - 定义一个Student类[属性和方法]
+
+        //JS - 函数
+
+        //无参的对象
+        function Person(){
+            //this代表的是当前对象
+            this.name = "tom";
+            this.age = 13;
+
+            //方法
+            this.study = function(){
+                alert("我在好好学习!");
+            }
+            //return this;//省略不写
+        }
+
+        //创建Person对象
+        var p = new Person();
+
+        //对属性进行外部的修改
+        p.name = "jack";
+
+        //访问对象中的属性
+        console.log(p.name);
+
+        //调用方法
+        //p.study();
+
+        //带参构造 
+        function Car(id,name,run){
+            this.id = id;
+            this.name = name;
+            this.run = run;
+        }
+
+        var c = new Car(1,"tom",function(){
+            alert("汽车正在奔跑...");
+        });
+
+        console.log(c.name);
+        c.run()
+    </script>
+</body>
+</html>

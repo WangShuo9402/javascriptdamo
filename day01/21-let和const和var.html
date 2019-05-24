@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function f1(){
+            let count = 1;
+            //局部变量
+            function f2(){
+                console.log("f2:"+count); //1
+            }
+            console.log("f1:"+count); //1
+            return f2();
+        }
+        f1();
+
+
+
+        //const  定义一个常量 -final
+        const n = 100;
+        //n = 200 ;常量一旦赋值成功将不能够再进行赋值
+        console.log(n);
+
+
+        {
+            var v1 = 100;
+            let t2 = 200;
+        }
+
+        console.log("v1:"+v1); //100
+        console.log("v2:"+v2); //undefined
+    </script>
+</body>
+
+</html>
