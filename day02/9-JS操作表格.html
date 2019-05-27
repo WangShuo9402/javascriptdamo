@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+       td{
+            border:1px solid red;
+        }
+        td{
+            width: 100px;
+        }
+        tr{ 
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button type="button" onclick="addLine()">add line</button>
+        <button type="button" onclick="removeLine()">remove line</button>
+
+        <button type="button" onclick="addCkLine()">add ck line</button>
+        <button type="button" onclick="removeAnyLine()">remove line</button>
+    </div>
+
+    <div>
+        <table id="tbl">
+            <tr>
+                <td><input type="checkbox" name="cks" id=""></td>
+                <td>1&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>   
+                <td><input type="checkbox" name="cks" id=""></td>
+                <td>2&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function addLine(){
+            //1. 获取表格对象
+            var tbl = document.getElementById("tbl");
+            //实际上应该再次获取tbody标签
+            var tbody = tbl.querySelector("tbody");
+            //2. 通过js来创建dom元素
+            //2-1. 创建行
+            var tr = document.createElement("tr");
+            //2-2. 创建两列
+            for(var i=0;i<2;i++){
+                var td = document.createElement("td");
+                //2-3. 将刚刚创建出来的td绑定到tr
+                // tr.insertBefore(参数1,参数);
+
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+
+        function removeLine(){
+            //1. 获取表格对象
+            var tbl = document.getElementById("tbl");
+            //实际上应该再次获取tbody标签
+            var tbody = tbl.querySelector("tbody");
+
+            //移除最后一个元素
+            //lastChild包含#text
+            tbody.removeChild(tbody.lastElementChild);
+        }
+        var seq = 3;
+        function addCkLine(){
+            //1. 获取表格对象
+            var tbl = document.getElementById("tbl");
+            //实际上应该再次获取tbody标签
+            var tbody = tbl.querySelector("tbody");
+            //2. 通过js来创建dom元素
+            //2-1. 创建行
+            var tr = document.createElement("tr");
+            //2-2. 创建两列
+            for(var i=0;i<3;i++){
+                var td = document.createElement("td");
+                //判断是否为第一列
+                if(i==0){
+                    //创建一个input
+                   // var td_input = document.createElement("input");
+                    //设置type
+                   // td_input.type="checkbox";
+                   //td_input.name="cks";
+                    //将该checkbox绑定到td
+                   // td.appendChild(td_input);
+                   td.innerHTML="<input type='checkbox' name='cks'>";
+                }
+
+                if(i==1){
+                    td.innerText=seq++;
+                }
+
+                //2-3. 将刚刚创建出来的td绑定到tr
+                // tr.insertBefore(参数1,参数);
+
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+
+        function removeAnyLine(){
+            //1. 获取表格对象
+            var tbl = document.getElementById("tbl");
+            //实际上应该再次获取tbody标签
+            var tbody = tbl.querySelector("tbody");
+
+            //2. 获取所有选中的checkbox
+            //var cks = document.queryAllSelector("#tbl input[type=checkbox]");
+            var cks = document.getElementsByName("cks");
+
+            //定义一个计数器
+            var count = 0;
+
+            //3. 遍历
+            for(var i in cks){
+                if(cks[i].checked){
+                    count++;
+                }
+            }
+            //判断是否选中
+            if(count==0){
+                alert("请您先勾选!");
+                return;
+            }
+            for(var i in cks){
+                if(cks[i].checked){
+                  //而是将cks[i]所在的tr从当前的tbody中删除
+                  var cks_tr = cks[i].parentElement.parentElement;
+                  //删除
+                  tbody.removeChild(cks_tr);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

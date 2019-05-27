@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="remember()">
+    <!-- 存储 - 服务器端存储[session等]
+         - 本地存储 - 浏览器[客户端] 持久化的操作
+           下次在进行查询的时候,不会产生带宽,不会向服务器端发送一个请求
+           减轻服务器的一个压力.
+
+           在html5之前,成熟的本地存储的技术叫做cookie
+
+           localStorage - 永久有效,除非手动进行清空
+                        - 存储的形式 - 是一个json的字符串 - key-value
+        -->
+
+        <form action="http://www.baidu.com" onsubmit="return test()">
+            <input type="text" id="username"><br>
+            <input type="password" id="pwd"><br>
+
+            <!-- 默认的value是on -->
+            <input type="checkbox" id="flag">记住密码<br>
+            <input type="submit" value="提交">
+        </form>
+
+        <script>
+            //如何利用一个普通按钮来提交一个表单对象.
+
+            //利用submit提交按钮来手动触发提交事件 - 需要提交之外的一些操作.
+            function test(){
+                //将表单中的数据存储到localStorage  - 存储json字符串
+                var uname = document.getElementById("username");
+              
+               var pwd = document.getElementById("pwd");
+               
+               //判断是否记住密码
+               var ck = document.getElementById("flag");
+            
+               if(ck.checked){
+                   //努力拼接json字符串
+                   var user = '{"username":"'+uname.value+'","password":"'+pwd.value+'"}';
+                   //写到localStorage中去 key - value的存储形式
+                   //此处的key是唯一的,map集合
+                   localStorage.setItem("user_local",user);
+               }else{
+                   //清空
+                   //localStorage.clear();
+
+                   //根据key来移除
+                   localStorage.removeItem("user_local");
+               }
+
+               return false;
+            }
+
+            function remember(){
+                //从本地存储中根据key来进行获取
+                var user_jsonstr = localStorage.getItem("user_local");
+                //alert(user_jsonstr)
+                //将json字符串转换成json对象
+                var user_json = JSON.parse(user_jsonstr);
+
+              
+                if(null!=user_json){
+                    var uname = document.getElementById("username");
+              
+                    var pwd = document.getElementById("pwd");
+                    //alert(user_json.username);
+                    uname.value = user_json.username;
+                    pwd.value = user_json.password;
+                }
+            
+            }
+        </script>
+</body>
+</html>

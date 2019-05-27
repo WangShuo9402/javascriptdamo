@@ -23,6 +23,55 @@
 
     <script>
         var outer = document.getElementById("outer");
+        //获取该标签下的所有子节点
+        //var outer_childs = outer.childNodes;//处理获取元素，还包含元素中的文本以及空格
+
+        var outer_childs = outer.children;//仅仅获取所有的子标签
+        //alter(outer_childs.length)
+          //遍历
+          for(var child_curr in outer_childs){
+            //打印节点的名称
+            document.write(outer_childs[child_curr].nodeName);
+        }
+
+        //获取a标签
+        var a = outer.querySelector("a");
+        //获取该标签的父节点
+        //var a_parent = a.parentNode;//除了标签还有#text
+
+        //链式编程
+        var a_parent = a.parentElement.parentElement.parentElement.parentNode;//html
+        console.log(a_parent.nodeName);
+
+        //上一个兄弟节点【紧紧相连】
+        //var a_input = a.previousSibling;
+        var a_input =a.previousElementSibling;
+        console.log(a_input.nodeName);
+
+        //获取下一个兄弟节点【仅仅相连的】
+        var a_span = a.nextSibling;
+        //var a_span = a.nextElementSibling;
+        console.log(a_span.nodeName);
+
+        //如何利用nextSibling来获取真正的标签
+        var a_span = getMyElement(a,"SPAN");
+        
+        console.log(a_span.nodeName);
+
+        function getMyElement(dom,label_name){
+            while(true){
+                if(dom.nextSibling.nodeName != label_name){
+                    dom = dom.nextSibling;
+                }else{
+                    return dom.nextSibling;
+                }
+            }
+        }
+
+        for(var i in document){
+            document.write(i+"<br>")
+        }
+
     </script>
 </body>
 

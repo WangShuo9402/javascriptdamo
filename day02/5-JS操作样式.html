@@ -1,59 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+       /* .default_span_username{
+            font-size: 14px;
+            color:#999
+        } */
+
         #username_span{
-            font-size:14px;
-            color:#999;
+            font-size: 14px;
+            color:#999
         }
 
         .success{
             color:green;
-            font-sise:16px;
+            font-size: 16px;
         }
 
         .failed{
             color:red;
-            font-size: 16px;
+            font-size: 16px
         }
     </style>
 </head>
-
 <body>
     <form>
         <table>
             <tr>
-                <td><input type="text" id="username"></td>
-                <td><span id="username_span" class="default_span_username">*用户名必须是首字母开头，长度在5-8位</span></td>
+                <td><input type="text" id="username" value="2"></td>
+                <td><span id="username_span" class="default_span_username">*用户名必须是首字母开头,长度在5-8位</span></td>
             </tr>
             <tr>
+                <!-- 单击事件 -->
                 <td colspan="2"><input type="button" onclick="test()" value="提交"></td>
             </tr>
         </table>
     </form>
     <script>
         function test(){
+            //1. 获取input输入框的对象
             var input = document.getElementById("username");
-
+            //2. 获取输入框的输入的值
             var value = input.value;
-
+            
+            //3. 进行正则判断
             var reg = /^[a-z][a-zA-Z_0-9]{4,7}$/
-            
-            var user_span = document.getElementById("username_span");      
-            
+
+            //获取span的对象
+            var user_span = document.getElementById("username_span");
+
+            //test 
             if(reg.test(value)){
+                //相当于行内样式的修改
+                //user_span.style.color="green";
+                //修改它的大小
+                //user_span.style.fontSize="16px";
+
+                //修改它的className的值
                 user_span.className="success";
             }else{
+               // user_span.style.color="red";
+                //user_span.style.fontSize="16px";
                 user_span.className="failed";
             }
-            
-            }
+        }
     </script>
 </body>
-
 </html>

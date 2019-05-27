@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
     <div id="outer">
         <div align="center">
             <img id="myImg" src="../images/lapulasidemonv.jpg" alt="图片加载失败">
         </div>
         <div align="center">
+            <!-- 如何通过a标签来触发一个单击事件 -->
             <a href="javascript:test(0)">1</a>
             <a href="javascript:test(1)">2</a>
             <a href="javascript:test(2)">3</a>
@@ -22,11 +21,13 @@
 
     <script>
         function test(pos){
+            //图片名称的数组 - 以后是从数据库中获取的
             var images_url = ["lapulasidemonv.jpg","meilianchuzhuxi.jpg","tenxunchuan.jpg"];
+            //获取img对象
             var myImg = document.querySelector("#myImg");
+            //修改这个img对象的src属性
             myImg.src="../images/"+images_url[pos];
         }
     </script>
 </body>
-
 </html>

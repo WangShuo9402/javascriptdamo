@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    td {
+        border: 1px solid red;
+    }
+
+    table {
+        width: 300px;
+    }
+
+    tr {
+        height: 30px;
+    }
+</style>
+
+<body>
+    <div>
+        <button type="button" onclick="addLine()">add line</button>
+        <button type="button" onclick="removeLine()">remove line</button>
+    </div>
+
+    <div>
+        <table id="tbl">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function addLine() {
+            //1.获取表格对象
+            var tbl = document.getElementById("tbl");
+            //实际上应该再次获取tbody标签
+            var tbody = tbl.querySelector("tbody");
+            //2.通过js来创建dom元素
+            //2-1 创建行
+            var tr = document.createElement("tr");
+            //2-2 创建两列
+            for (var i = 0; i < 2; i++) {
+                var td = document.createElement("td");
+                //2-3 0将创建出来的列td绑定到行tr中
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+
+        function removeLine(){
+            //1.获取表格对象
+            var tbl = document.getElementById("tbl");
+            //2.实际上再次获取tbody标签
+            var tbody = tbl.querySelector("tbody");
+
+            //移除最后一个元素
+            //lastChild 包含#text
+            tbody.removeChild(tbody.lastElementChild);
+        }
+    </script>
+</body>
+
+</html>

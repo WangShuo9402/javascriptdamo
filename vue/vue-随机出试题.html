@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        td{
+            border:1px solid red;
+            width: 100px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .init{
+            color:#999;
+            font-size: 14px;
+        }
+
+        .success{
+            color:green;
+            font-size: 12px;
+        }
+
+        .failed{
+            color:red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="outer">
+                <input type="number" v-model="num" value="10" placeholder="请您输入出题的数量" id="question">
+                <button type="button" @click="test">出题</button>
+                <button type="button" onclick="check(this)" disabled id="btn">检查答案</button>
+            </div>
+            <div id="ques_div">
+                <table>
+                    <tr v-for="item in json">
+                        <td>{{item.question}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+  
+    <script src="../vue/vue.js"></script>
+    <script>
+        //var sign = ["+","-","*","/"];
+        var sign=["+","-"];
+        
+        new Vue({
+            el:"#app",
+            //定义这个容器所有可能的数据
+            data:{
+                json:[],
+                num:""
+            },
+            //存储id=app容器中的所有的事件...
+            methods:{
+                test(){
+                    
+                    //获取题目的数据
+                    //var num = document.getElementById("question").value;
+                    //for循环
+                    for(var i=0;i<this.num;i++){
+                        //创建一个表单的json对象
+                        var first_num = Math.floor(Math.random()*100+1);
+                        
+                        var signs = sign[Math.floor(Math.random()*sign.length)];
+
+                        var two_num = Math.floor(Math.random()*100+1);
+
+
+                        var expression=first_num+signs+two_num;
+                        var curr_q = '{"question":"'+expression+'"}';
+                        var curr_q_json = JSON.parse(curr_q);
+                        //alert(curr_q_json.question)
+
+                        //将json对象放入到json数组中
+                        this.json.push(curr_q_json);
+                    }
+                }
+            }
+        })
+
+
+
+
+
+
+
+
+        function check(obj){
+            var btn = obj.previousElementSibling;
+    
+            btn.disabled=false;
+
+            //获取所有的表达式的列
+            var expr_td = document.getElementsByClassName("expression");
+            //循环遍历
+            for(var i in expr_td){
+                //获取当前表达式的td
+                var td = expr_td[i];
+                //计算td中的表达式
+                var result = eval(td.innerText);
+                //alert(result);
+
+                //获取每个表达式所在行的第二列中的input输入的答案
+                var input = td.nextElementSibling.children[0];
+
+                var span = td.nextElementSibling.nextElementSibling.children[0];
+                if(result==input.value){
+                    span.className="success";
+                    span.innerText="√";
+                    //alert("ok")
+                }else{
+                    //alert("error")
+                    span.className="failed";
+                    span.innerText="× 正确答案:"+result;
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

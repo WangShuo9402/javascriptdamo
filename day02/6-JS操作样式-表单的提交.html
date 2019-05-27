@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .default_span_username{
+       .default_span_username{
             font-size: 14px;
-            color: #999;
+            color:#999
         }
+
+        /* #username_span{
+            font-size: 14px;
+            color:#999
+        } */
 
         .success{
             color:green;
@@ -19,11 +23,10 @@
 
         .failed{
             color:red;
-            font-size: 16px;
+            font-size: 16px
         }
     </style>
 </head>
-
 <body>
     <form action="4-JS来切换图片.html" id="loginForm">
         <table>
@@ -36,43 +39,61 @@
                 <td><span id="pwd_span" class="default_span_username">*密码纯数字,长度在5-8位</span></td>
             </tr>
             <tr>
+                <!-- 单击事件 -->
                 <td colspan="2"><input type="button" onclick="test()" value="提交"></td>
             </tr>
         </table>
     </form>
     <script>
         function test(){
+            //1. 获取input输入框的对象
             var input = document.getElementById("username");
             var pwd = document.getElementById("password");
-
+            //2. 获取输入框的输入的值
             var value = input.value;
             var pwd_value = pwd.value;
-
+            
+            //3. 进行正则判断
             var reg = /^[a-z][a-zA-Z_0-9]{4,7}$/
-            var pwd_reg = /^[0-9]{4,7}$/
+            var pwd_reg=/^[0-9]{4,7}$/
 
+            //获取span的对象
             var user_span = document.getElementById("username_span");
             var pwd_span = document.getElementById("pwd_span");
 
+            //test 
             if(reg.test(value)){
+                //相当于行内样式的修改
+                //user_span.style.color="green";
+                //修改它的大小
+                //user_span.style.fontSize="16px";
+
+                //修改它的className的值
                 user_span.className="success";
             }else{
+               // user_span.style.color="red";
+                //user_span.style.fontSize="16px";
                 user_span.className="failed";
             }
 
+            //test 
             if(pwd_reg.test(pwd_value)){
                 pwd_span.className="success";
-            }else{
+            }else{ 
                 pwd_span.className="failed";
             }
 
+            //如何通过一个普通按钮来提交form表单
+            //当且仅当所有的表单中的数据都是符合规则的时候
+
+            //获取表单对象
             var loginForm = document.getElementById("loginForm");
 
             if(reg.test(value) && pwd_reg.test(pwd_value)){
+            //对象 - 访问属性 - 调用方法
                 loginForm.submit();
             }
         }
     </script>
 </body>
-
 </html>
