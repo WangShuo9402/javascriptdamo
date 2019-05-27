@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        td {
+            border: 1px solid red;
+            width: 100px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .init {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .success {
+            color: green;
+            font-size: 12px;
+        }
+
+        .failed {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <input type="number" value="10" placeholder="请您输入出题的数量" id="question">
+        <button type="button" onclick="create(this)">出题</button>
+        <button type="button" onclick="check(this)" disabled id="btn">检查答案</button>
+    </div>
+
+    <div id="ques_div">
+
+    </div>
+
+    <script>
+        var sign = ["+", "-"];
+        function create(obj) {
+            obj.disabled = true;
+
+            var ck_btn = document.getElementById("btn");
+            ck_btn.disabled = false;
+
+            var ques_div = document.getElementById("ques_div");
+            //清空div
+            ques_div.innerHTML = "";
+
+            //创建一个表格
+            var tbl = document.createElement("table");
+            //创建一个tbody
+            var tbody = document.createElement("tbody");
+
+            //获取行数  进行参数有效性判断
+            var trs = document.getElementById("question").value;
+
+            //创建行数
+            for (var i = 0; i < trs; i++) {
+                var tr = document.createElement("tr");
+
+                //第一列存放的是表达式
+                //随机第一个数 1-100 之间的随机数
+                var first_num = Math.floor(Math.random() * 100 + 1);
+                //符号 + -
+                var signs = sign[Math.floor(Math.random() * sign.length)];
+
+                var two_num = Math.floor(Math.random() * 100 + 1);
+
+                var first_td = document.createElement("td");
+                //添加一个属性即可 td是不允许设置name
+                first_td.className = "expression";
+
+                first_td.innerText = first_num + signs + two_num;
+
+                //第二列 里面会存放一个文本框 输入答案
+                var two_td = document.createElement("td");
+                two_td.innerHTML = "<input type='text' name='all_aw' style='height:100%'>";
+
+                //第三列
+                var three_td = document.createElement("td");
+                three_td.innerHTML = "<span class='init'>*</span>";
+
+                //绑定节点
+                tr.appendChild(first_td);
+                tr.appendChild(two_td);
+                tr.appendChild(three_td);
+                tbody.appendChild(tr);
+            }
+
+            tbl.appendChild(tbody);
+            ques_div.appendChild(tbl);
+        }
+
+        function check(obj) {
+            var btn = obj.previousElementSibling;
+            btn.disabled = false;
+
+            //获取所有的表达式的列
+            var expr_td = document.getElementsByClassName("expression");
+            //循环遍历
+            for (var i in expr_td) {
+                //获取当前表达式的td
+                var td = expr_td[i];
+                //计算td中的表达式
+                var result = eval(td.innerText);
+
+                //获取每一个表达式所在行的第二列中的input输入的答案
+                var input = td.nextElementSibling.children[0];
+
+                var span = td.nextElementSibling.nextElementSibling.children[0];
+                if (result == input.value) {
+                    span.className = "success";
+                    span.innerText = "√";
+                } else {
+                    span.className = "failed";
+                    span.innerText = "x 正确答案：" + result;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

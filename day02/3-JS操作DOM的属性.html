@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="http//www.baidu.com">百度一下</a>
+    
+    <script>
+        // 1.获取a标签对象DOM
+        // var a = document.getElementsByTagName("a")[0];
+
+        // 返回这个页面中第一次出现的a 标签
+        // var a = document.querySelector("a")[0];
+
+        var a = document.querySelectorAll("a")[0];
+
+        //获取DOM的属性
+        //通过对象.属性来访问属性
+        console.log(a.href);
+
+        // 修改属性href
+        a.href="http://www.taobao.com";
+    </script>
+</body>
+
+</html>

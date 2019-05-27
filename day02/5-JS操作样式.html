@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #username_span{
+            font-size:14px;
+            color:#999;
+        }
+
+        .success{
+            color:green;
+            font-sise:16px;
+        }
+
+        .failed{
+            color:red;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td><input type="text" id="username"></td>
+                <td><span id="username_span" class="default_span_username">*用户名必须是首字母开头，长度在5-8位</span></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" onclick="test()" value="提交"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function test(){
+            var input = document.getElementById("username");
+
+            var value = input.value;
+
+            var reg = /^[a-z][a-zA-Z_0-9]{4,7}$/
+            
+            var user_span = document.getElementById("username_span");      
+            
+            if(reg.test(value)){
+                user_span.className="success";
+            }else{
+                user_span.className="failed";
+            }
+            
+            }
+    </script>
+</body>
+
+</html>
