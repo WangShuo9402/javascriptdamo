@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer{
+            border: 1px solid red;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        .over{
+            border: 1px solid red;
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+        }
+
+        .down{
+            border: 1px solid red;
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+
+        .up{
+            border: 1px solid red;
+            width: 300px;
+            height: 300px;
+            background-color: #999999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer" id="outer" onmouseover="over(this)" onmouseout="out(this)" onmousedown="down(this)"></div>
+
+
+    <script>
+        function over(obj){
+            obj.className="over";
+        }
+
+        function out(obj){
+            obj.className="outer";
+        }
+
+        function down(obj){
+            obj.className="down";
+        }
+
+        var outer = document.getElementById("outer");
+        outer.onmouseup=function(){
+            this.className="up";
+        }
+    </script>
+</body>
+
+</html>

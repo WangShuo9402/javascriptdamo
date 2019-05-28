@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .c1{
+            /* 显示 */
+            display: block;
+        }
+
+        .c2{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <span onclick="login()">登录</span>
+
+    <span ondblclick="register()">注册组件</span>
+
+    <h3 class="c1">登录组件</h3>
+
+    <h3 class="c2">注册组件</h3>
+
+    <script>
+        function login(){
+            register_h3=document.querySelectorAll("h3")[0];
+            register_h3.className="c1";
+
+            login_h3 = document.querySelectorAll("h3")[1];
+            login_h3.className="c2";
+        }
+
+        function register(){
+            register_h3= document.querySelectorAll("h3")[0];
+            register_h3.className="c2";
+
+            login_h3= document.querySelectorAll("h3")[1];
+            login_h3.className="h1";
+        }
+    </script>
+</body>
+
+</html>
