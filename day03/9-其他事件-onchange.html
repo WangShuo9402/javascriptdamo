@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="initData()">
+    <select id="province" onchange="changeCity(this)">
+        <option value="-1">===请你选择省份===</option>
+    </select>
+
+    <select id="city">
+        <option value="-1">===请你选择市</option>
+    </select>
+
+    <script>
+        var province = ["江苏省","安徽省"];
+
+        var city = [["苏州市","常州市","南京市","徐州市","盐城市","泰州市","扬州市","宿迁市","镇江市","淮安市"],["合肥市","黄山市","芜湖市","巢湖市","亳州市","宿州市","滁州市"]];
+        
+        var pro_select = document.getElementById("province");
+
+        var city_select = document.getElementById("city");
+
+        function initData(){
+            for(var p in province){
+                var op = new Option(province[p],p);
+
+                pro_select.appendChild(op);
+            }
+        }
+
+        function changeCity(obj){
+            city_select.options.length = 1;
+
+            var pro_city = city[obj.value];
+
+            for(var c in pro_city){
+                var op = new Option(pro_city[c],c);
+                city_select.appendChild(op);
+            }
+        }
+    </script>
+    
+</body>
+</html>

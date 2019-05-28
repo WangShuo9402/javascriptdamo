@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        username:<input type="text" onblur="test()"><span>*用户名规则</span><br>
+        password:<input type="password"><br>
+        确认密码:<input type="password">
+    </form>
+
+    <script>
+            //完整的表单的验证
+            //1. 一开始加载该页面的时候,那么所有的验证规则默认是灰色.
+            //1-1. 但是在没有输入任何内容时候,直接按提交按钮,所有的验证规则全部为红色
+            //2. 当任意一个文本输入框填充完毕之后,失去焦点之后,那么就会立即验证规则.绿 红
+            //3. 当且仅当所有的输入框全部验证成功,点击提交 - 提交到指定的action
+            function test(){
+                alert("失去焦点的事件!");
+            }
+        </script>
+</body>
+
+</html>

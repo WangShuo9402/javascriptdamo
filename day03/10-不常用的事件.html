@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+             /* 如果希望FF浏览器实现不可选中文本,通过css的样式来实现的 */
+            -moz-user-select:none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer" onselectstart="return starts()">
+        华为麒麟芯片
+        华为鸿蒙系统
+        华为5G
+    </div>
+
+     <!-- onselect - 选中文本时发生的事件 -->
+    <input type="text" onselect="outer()">
+
+    <script>
+         //禁用鼠标右击事件...
+        document.oncontextmenu = function(){
+            return false;
+        }
+
+        function starts(){
+            return false;
+        }
+
+        //选中的事件
+        function outer(){
+            alert("选中了")
+        }
+
+        function focus(obj){
+            alert(obj)
+        }
+    </script>
+</body>
+
+</html>

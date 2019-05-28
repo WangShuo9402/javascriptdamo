@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #myImg{
+            width: 80px;
+            height: 80px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="myImg" src="../images/lapulasidemonv.jpg" alt="图片加载失败">
+
+    <script>
+        var img = document.getElementById("myImg");
+        document.onmousemove = function(event){
+            var e = window.event || event;
+
+            img.style.display="block";
+            img.style.position="absolute";
+            img.style.left=e.clientX+"px";
+            img.style.top= e.clientY+"px";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="username">
+
+    <!-- 键盘抬起的事件 -->
+    <script>
+        var input = document.getElementById("username");
+        var count = 0;
+
+        //键盘抬起的事件
+        input.onkeyup = function(){
+            //将输入的内容转换成大写
+            //this.value = this.value.toUpperCase();
+            count++;
+
+            if(count == 4){
+                this.value == this.value+" ";
+                count = 0;
+            }
+        }
+        
+        //应用场景 - 输入建设银行的账号
+        //每到达四位,就自动空一格 - 正则表达式
+    </script>
+</body>
+
+</html>
