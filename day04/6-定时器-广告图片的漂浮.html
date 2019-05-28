@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/lapulasidemonv.jpg">
+
+    <script>
+        var img = document.getElementsByTagName("img")[0];
+
+        //图片距离可见区域顶端和左端的距离
+        var m_top = 0;
+        var m_left = 0;
+
+        //每次移动10个像素
+        var moves_top = 10;
+        var moves_left = 10;
+        //window的可见区域的尺寸
+        var cx = 0;
+        var cy = 0;
+
+        //定义图片本身的高度和宽度[包括border]
+        var img_x = 0;
+        var img_y = 0;
+
+        function move(){
+            //进行边界的判断操作
+            //window的尺寸...
+            cx = document.documentElement.clientWidth;
+            cy = document.documentElement.clientHeight;
+
+            img_x = img.offsetWidth;
+            img_y = img.offsetHeight;
+
+            if(img_y+m_top>=cy || m_top<0){
+                moves_top*=-1;
+            }
+
+            if(img_x+m_left>=cx || m_left<0){
+                moves_left*=-1;
+            }
+
+            m_top+=moves_top;
+            m_left+=moves_left;
+
+
+
+            //重新设置图片的top和left
+            img.style.top = m_top+"px";
+            img.style.left = m_left+"px";
+
+
+        }
+
+        var dt = setInterval("move()",50);
+
+        //鼠标放在图片上的时候,清空定时器对象
+        img.onmouseover = function(){
+            //清除定时器
+            clearInterval(dt);
+        }
+
+        //特别特别要注意的
+        //页面上的定时器会累加的.
+        img.onmouseout = function(){
+            dt = setInterval("move()",50);
+        }
+
+
+    </script>
+</body>
+</html>

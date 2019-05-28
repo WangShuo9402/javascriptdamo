@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #myImg{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="myImg"> -->
+    <!-- 图片默认会有一个单击事件
+        a,button都会存在一个单击事件
+    -->
+    <img src="../images/lapulasidemonv.jpg" id="myImg" alt="图片加载失败">
+
+    <script>
+        var myImg = document.getElementById("myImg");
+ // 计算出鼠标按下去时的焦点距离图片的左边的距离
+        var emx = 0;
+// 计算出鼠标按下去时的焦点距离图片的上边的距离
+        var emy = 0;
+ //定义标记位
+        var flag = false;
+
+   //鼠标抬起事件 - 移动事件失效
+        document.onmouseup = function(){
+            if(flag){
+                flag=false;
+            }
+        }
+
+         //图片按下去的事件
+        myImg.onmousedown = function(event){
+           //取消元素默认的事件[图片默认拥有一个单击事件]
+           event.preventDefault();
+
+           var e = window.event || event;
+           //获取按下去的时候，鼠标距离课件区域的左边的距离
+           var ex = e.clientX;
+           //获取DOM元素- img距离文档可见区域的左边的距离
+           var mx = myImg.offsetLeft;
+           emx = ex -mx;
+           var ey = e.clientY;
+           var my = myImg.offsetTop;
+           emy = ey -my;
+
+           if(!flag){
+               flag =true;
+           } 
+        }
+
+        //给document添加鼠标移动事件
+        document.onmousemove = function(event){
+            var e = window.event || event;
+            //重新计算出img的top和left
+            var top = e.clientY -emy;
+            var left = e.clientX -emx;
+            if(flag){
+                myImg.style.top = top +"px";
+                myImg .style.left = left+"px";
+            }
+        }
+    </script>
+</body>
+
+</html>

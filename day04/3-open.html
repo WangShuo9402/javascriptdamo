@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="search">
+    <button type="button" onclick="baidu()">百度一下</button>
+
+    <script>
+        function baidu(){
+              //打开一个新的窗口
+            //window.open("http://www.runoob.com","_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400");
+            
+            //进行url的跳转
+            //肯定需要用到的
+            var search = document.getElementById("search").value;
+
+            window.location = "http://www.baidu.com?search="+search;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            /* height: 800px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer"></div>
+
+    <script>
+        var outer = document.getElementById("outer");
+
+        //window.innerWidth -包括滚动条的宽度
+        str = window.innerWidth+":"+window.innerHeight;
+
+        str+="<br>";
+
+        // clientHeight - 可见区域 - 不包括滚动条的宽度
+        str+= document.documentElement.clientWidth+":"+document.documentElement.clientHeight;
+
+        str+="<br>";
+
+         //当body标签设置了height的样式的时候,那么clientHeight才能获取到值,否则为0
+         str+= document.body.clientWidth+":"+document.body.clientHeight;
+
+         outer.innerHTML=str;
+    </script>
+</body>
+
+</html>

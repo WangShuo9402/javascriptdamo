@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .c1{
+            border: 1px solid red;
+            width: 300px;
+            height: 150px;
+            background-color: red
+        }
+        .c2{
+            border: 1px solid red;
+            width: 300px;
+            height: 150px;
+            background-color: yellow;
+        }
+        .c3{
+            border: 1px solid red;
+            width: 300px;
+            height: 150px;
+            background-color: blue;
+        }
+
+        .c4{
+            border: 1px solid red;
+            width: 300px;
+            height: 150px;
+            background-color: orange;
+        }
+
+        .c5{
+            border: 1px solid red;
+            width: 300px;
+            height: 150px;
+            background-color:pink;
+        }
+
+        .c6{
+            border: 1px solid red;
+            width: 300px;
+            height: 150px;
+            background-color:olive;
+        }
+
+        #left,#right{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+   <div>
+        <div id="left">
+            <div class="c1">Java</div>
+            <div class="c2">Oracle</div>
+            <div class="c3">JavaScript</div>
+        </div>
+        <div id="right">
+            <div class="c4">
+                <h2>Java</h2>
+            </div>
+            <div class="c5" style="display:none">
+                <h2>Oracle</h2>
+            </div>
+            <div class="c6" style="display: none">
+                <h2>JavaScript</h2>
+            </div>
+        </div>
+   </div>   
+
+   <script>
+       //获取所有的左边的div
+       var div_left = document.querySelectorAll("#left div");
+       
+       var div_content = document.querySelectorAll("#right div");
+
+       //给左边的所有的div_left添加一个onmouseover事件
+       for(let i in div_left){
+           div_left[i].onmouseover = function(){
+              //将它对应的div显示,其他div隐藏....
+              for(let j in div_content){
+                  if(i == j){
+                      div_content[j].style.display="block";
+                  }else{
+                      div_content[j].style.display="none";
+                  }
+              }
+
+           }
+       }
+   </script>
+</body>
+</html>
